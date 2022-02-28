@@ -13,13 +13,13 @@ import {
 } from'./NavbarElements';
 
 
-export const Navbar = () => {
+export const Navbar = ({toggle}) => {
     return (
         <div>
             <Nav>
                 <NavbarContainer>
                     <NavLogo to='/'>BGS</NavLogo>
-                    <MobileIcon>
+                    <MobileIcon onClick={toggle}>
                         <FaBars />
                     </MobileIcon>
                     <NavMenu>
