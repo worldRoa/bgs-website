@@ -34,6 +34,7 @@ const InfoSection = ({lightBg, id, imgStart, topLine, lightText, headLine, darkT
                             spy={true}
                             exact="true"
                             offset={-80}
+                            href={true}
                             primary={primary ? 1 : 0}
                             dark={dark ? 1 : 0}
                             dark2={dark2 ? 1 : 0}

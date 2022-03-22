@@ -1,18 +1,18 @@
 export const homeObjOne = {
     id: 'about',
-    lightBg: false,
-    lightText: true,
-    lightTextDesc: true,
+    lightBg: true,
+    lightText: false,
+    lightTextDesc: false,
     topLine: 'Holistic Products',
     headLine: 'Recyclable Top of the line products',
     description: 'B.L.U.E. LLC is a company creating holistic and innovative solutions to health and wellness products. We want to reduce our carbon footprint by providing long-lasting durable Products to be made of recyclable materials.',
     buttonLabel: 'Get Started',
     imgStart: false,
-    img: require('../../images/svg1.svg').default,
+    img: require('../../images/biz-logo.png'),
     alt: 'Meditation',
-    dark: true,
-    primary: true,
-    darkText: false
+    dark: false,
+    primary: false,
+    darkText: true, 
 };
 
 export const homeObjTwo = {
@@ -46,7 +46,8 @@ export const homeObjThree = {
     alt: 'Meditation',
     dark: false,
     primary: false,
-    darkText: true
+    darkText: true,
+    href: 'https://gofund.me/c5731bfd'
 };
 
 export const homeObjFour = {
@@ -58,7 +59,7 @@ export const homeObjFour = {
     headLine: 'Creating an account is extremely easy',
     description: "Get everything set up and ready in under 10 minutes. All you need to do is add your information and you're ready to go.",
     buttonLabel: 'Start Now',
-    imgStart: false,
+    imgStart: true,
     img: require('../../images/svg1.svg').default,
     alt: 'Meditation',
     dark: true,

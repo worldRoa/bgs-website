@@ -1,6 +1,8 @@
 import styled from 'styled-components';
+import logo from "../../images/biz-logo.png";
 import { Link as LinkR } from 'react-router-dom';
 import { Link as LinkS } from 'react-scroll';
+
 
 export const Nav = styled.nav`
     background: #000;
@@ -41,6 +43,14 @@ export const NavLogo = styled(LinkR)`
     font-weight: bold;
     text-decoration: none;
 `;
+
+export const HeaderImg = styled.img.attrs({
+    src: `${logo}`
+    })`
+    width: 100%;
+    height: 100%;
+    margin-top: 1.2em;
+    `;
 
 export const MobileIcon = styled.div`
     display: none;
@@ -84,7 +94,7 @@ export const NavLinks = styled(LinkS)`
     cursor: pointer;
 
     &.active {
-        border-bottom: 3px solid #01bf71;
+        border-bottom: 3px solid #1b9ba4;
     }
 `;
 
@@ -99,7 +109,7 @@ export const NavBtn = styled.nav`
 
 export const NavBtnLink = styled(LinkR)`
     border-radius: 50px;
-    background: #01bf71;
+    background: #1b9ba4;
     white-space: nowrap;
     padding: 10px 22px;
     color: #010606;

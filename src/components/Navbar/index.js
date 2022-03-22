@@ -9,7 +9,8 @@ import {
     NavItem,
     NavLinks,
     NavBtn,
-    NavBtnLink
+    NavBtnLink,
+    HeaderImg
 } from'./NavbarElements';
 
 
@@ -18,7 +19,7 @@ export const Navbar = ({toggle}) => {
         <>
             <Nav>
                 <NavbarContainer>
-                    <NavLogo to='/'>BGS</NavLogo>
+                    <NavLogo to='/'><HeaderImg /></NavLogo>
                     <MobileIcon onClick={toggle}>
                         <FaBars />
                     </MobileIcon>
