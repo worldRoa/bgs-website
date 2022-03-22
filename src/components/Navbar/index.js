@@ -15,7 +15,7 @@ import {
 
 export const Navbar = ({toggle}) => {
     return (
-        <div>
+        <>
             <Nav>
                 <NavbarContainer>
                     <NavLogo to='/'>BGS</NavLogo>
@@ -41,7 +41,7 @@ export const Navbar = ({toggle}) => {
                     </NavBtn>
                 </NavbarContainer>
             </Nav>
-        </div>
+        </>
     );
 };
 
