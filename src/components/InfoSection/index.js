@@ -16,7 +16,7 @@ import {
 } from './InfoElements';
 
 
-const InfoSection = ({lightBg, id, imgStart, topLine, lightText, headLine, darkText, description, alt, buttonLabel, img, primary, dark, dark2}) => {
+const InfoSection = ({href, lightBg, id, imgStart, topLine, lightText, headLine, darkText, description, alt, buttonLabel, img, primary, dark, dark2}) => {
     return (
         <>
         <InfoContainer lightBg={lightBg} id={id}>
@@ -28,13 +28,15 @@ const InfoSection = ({lightBg, id, imgStart, topLine, lightText, headLine, darkT
                         <Heading lightText={lightText}>{headLine}</Heading>
                         <Subtitle darkText={darkText}>{description}</Subtitle>
                         <BtnWrap>
-                            <Button to='home'
+                            <Button to={href}
                             smooth={true}
                             duration={500}
                             spy={true}
                             exact="true"
                             offset={-80}
-                            href={true}
+                            href={href}
+                            target="_blank"
+                            onClick={href}
                             primary={primary ? 1 : 0}
                             dark={dark ? 1 : 0}
                             dark2={dark2 ? 1 : 0}
@@ -51,7 +53,7 @@ const InfoSection = ({lightBg, id, imgStart, topLine, lightText, headLine, darkT
             </InfoWrapper>
         </InfoContainer>
         </>
-    )
-}
+    );
+};
 
-export default InfoSection
+export default InfoSection;

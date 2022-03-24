@@ -30,8 +30,8 @@ const HeroSection = () => {
             <HeroContent>
                 <HeroH1>Meditation Made Easy</HeroH1>
                 <HeroP>
-                    Sign up for a new account today and receive $50
-                    in credit towards your next payment.
+                    Sign up for a new account today and receive 20%
+                    off towards your next payment.
                 </HeroP>
                 <HeroBtnWrapper>
                     <Button to='signup' onMouseEnter={onHover}
