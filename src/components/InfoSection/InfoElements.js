@@ -2,7 +2,11 @@ import styled from 'styled-components'
 
 export const InfoContainer = styled.div`
     color:#fff;
-    background: ${({lightBg}) => (lightBg ? '#f9f9f9' : '#2a2f48')};
+    background: ${({lightBg}) => (lightBg ? '#fff' : `linear-gradient(
+        128deg,
+        rgb(12, 36, 68) 0%,
+        rgb(27, 155, 164) 100%
+    )`)};
     border-bottom: 2px solid black;
     border-top: 2px solid black;
 
