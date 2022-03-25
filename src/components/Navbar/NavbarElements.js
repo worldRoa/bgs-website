@@ -17,7 +17,6 @@ export const Nav = styled.nav`
     z-index: 10;
     border-bottom: 3px solid black;
 
-
     @media screen and (max-width: 960px) {
         transition: 0.8s all ease;
     }
