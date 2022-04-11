@@ -18,10 +18,8 @@ const SignupForm = (props) => {
                 <Marginer direction="vertical" margin={50} />
                 <SubmitButton type="submit">Sign&nbsp;Up</SubmitButton>
                 <Marginer direction="vertical" margin="1em" />
-                <MutedLink>Already have an account?{" "}
-                <BoldLink
-                    onClick={switchToSignin}
-                    >Sign&nbsp;In</BoldLink></MutedLink>
+                <MutedLink href={switchToSignin}>Already have an account?{" "}
+                <BoldLink href={switchToSignin} onClick={switchToSignin}>Sign&nbsp;In</BoldLink></MutedLink>
         </BoxContainer>
     )
 }
