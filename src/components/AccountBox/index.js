@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import logo from "../../images/biz-logo.png";
 import LoginForm from "./loginForm";
+import { motion } from "framer-motion";
+import { AccountContext } from "./accountContext";
+import SignupForm from "./signupForm";
 
 
 const BoxContainer = styled.div`
-    width: 380px;
-    min-height: 700px;
+    width: 330px;
+    min-height: 620px;
     display: flex;
     flex-direction: column;
     border-radius: 19px;
@@ -33,81 +36,145 @@ const BizLogo = styled.img.attrs({
     `;
 
 const TopContainer = styled.div`
-    width: 100%;
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 1.8em;
-    padding-bottom: 5em;
+width: 100%;
+height: 250px;
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+padding: 0 1.8em;
+padding-bottom: 4em;
 `;
 
 
-const BackDrop = styled.div`
-    width: 155%;
-    height: 590px;
+const BackDrop = styled(motion.div)`
+    width: 140%;
+    height: 570px;
     position: absolute;
     display: flex;
     flex-direction: column;
     border-radius: 50%;
     transform: rotate(60deg);
     top: -290px;
-    left: -140px;
+    left: -70px;
     background: #1b9ba4;
     background: linear-gradient(
-        58deg,
-        rgb(12, 36, 68) 25%,
-        #1b9ba4 80%
+        78deg,
+        rgb(12, 36, 68) 20%,
+        #1b9ba4 100%
     );
 `;
 
 const HeaderContainer = styled.div`
-        width:100%;
-        display: flex;
-        flex-direction: column;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 `;
 
 const HeaderText = styled.h2`
-        font-size: 30px;
-        font-weight: 600;
-        line-height: 1.24;
-        color: #fff;
-        z-index: 10;
-        margin: 0;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.24;
+    color: #fff;
+    z-index: 10;
+    margin: 0;
+    margin-top: 6px;
 `;
 
 const SmallText = styled.h5`
     color: #fff;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 11px;
     z-index: 10;
     margin: 0;
-    margin-top: 15px;
+    margin-top: 12px;
 `;
 
 const InnerContainer = styled.div`
     width: 100%;
     display: flex;
-    flexx-direction: column;
+    flex-direction: column;
+    padding: 0 1.8em;
+    padding-top: 2em;
 `;
 
+const backdropVariants = {
+    expanded: {
+        width: "213%",
+        height: "1070px",
+        borderRadius: "20%",
+        transform: "rotate(60deg)",
+    },
+    collapsed: {
+        width: "140%",
+        height: "570px",
+        borderRadius: "50%",
+        transform: "rotate(60deg)",
+    }
+};
+
+const expandingTransition = {
+    type: "spring",
+    duration: 2.3,
+    stiffness: 30,
+}
+
 export const AccountBox = (props) => {
+
+    const [isExpanded, setExpanded] = useState(false);
+    const [active, setActive] = useState("signin");
+
+    const playExpandingAnimation = () => {
+        setExpanded(true);
+        setTimeout(() => {
+            setExpanded(false);
+        }, expandingTransition.duration * 1000 - 1200);
+    };
+
+    const switchToSignup = () => {
+        playExpandingAnimation();
+        setTimeout(() => {
+            setActive("signup");
+        }, 400);
+    };
+
+    const switchToSignin = () => {
+        playExpandingAnimation();
+        setTimeout(() => {
+            setActive("signin");
+        }, 400);
+    };
+
+    const contextValue = { switchToSignup, switchToSignin };
+
     return (
         <>
+    <AccountContext.Provider value={contextValue}>
     <Logo to={'/'}><BizLogo /></Logo>
-    <BoxContainer>
-        <TopContainer>
-            <BackDrop />
-            <HeaderContainer>
-                <HeaderText>Welcome</HeaderText>
-                <HeaderText>Back</HeaderText>
-                <SmallText>Please sign-in to continue!</SmallText>
-            </HeaderContainer>
-            <InnerContainer>
-                <LoginForm />
-            </InnerContainer>
-        </TopContainer>
-    </BoxContainer>
+        <BoxContainer>
+            <TopContainer>
+                <BackDrop
+                    initial={false}
+                    animate={isExpanded ? "expanded" : "collapsed"}
+                    variants={backdropVariants}
+                    transition={expandingTransition}
+                    />
+                    {active === "signin" && <HeaderContainer>
+                    <HeaderText>Welcome</HeaderText>
+                    <HeaderText>Back</HeaderText>
+                    <SmallText>Please sign-in to continue!</SmallText>
+                </HeaderContainer>}
+                    {active === "signup" && <HeaderContainer>
+                    <HeaderText>Create an</HeaderText>
+                    <HeaderText>Account</HeaderText>
+                    <SmallText>Please sign-up to continue!</SmallText>
+                </HeaderContainer>}
+            </TopContainer>
+                <InnerContainer>
+                    {active === "signin" && <LoginForm />}
+                    {active === "signup" && <SignupForm />}
+                </InnerContainer>
+        </BoxContainer>
+    </AccountContext.Provider>
     </>
     );
 };
